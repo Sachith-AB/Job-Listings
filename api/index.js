@@ -3,8 +3,11 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
+
 import cookieParser from 'cookie-parser';
 import path from 'path';
+
+import postRoutes from './routes/post.route.js'
 
 dotenv.config();
 
@@ -28,6 +31,7 @@ app.listen(4500, () => {
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 
+
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('*', (req, res) => {
@@ -43,3 +47,6 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+
+app.use('/api/post', postRoutes);
+
