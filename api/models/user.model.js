@@ -141,7 +141,7 @@ const userSchema = new mongoose.Schema({
     },
 
     //Feild specific to job seeker
-    cv: {
+    resume: {
         type: String,
         required: function () {
             return this.role === 'jobSeeker';
