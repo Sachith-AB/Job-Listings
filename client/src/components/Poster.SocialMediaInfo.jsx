@@ -3,7 +3,7 @@ import { TextInput,FileInput,Button,Textarea,Select } from 'flowbite-react'
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 
-export default function PosterCompanyInfo() {
+export default function PosterSocialMediaInfo() {
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen bg-gray-100'>
     <form className="flex flex-col flex-wrap gap-4 m-10" >
@@ -17,7 +17,7 @@ export default function PosterCompanyInfo() {
          <Select className='w-1/4'>
             <option value="uncategorized">Select a category</option>
             <option value="javascript">JavaScript</option>
-            <option value="react.js">React.js</option>
+            <option value="reacbt.js">React.js</option>
             <option value="next.js">Next.js</option>
             <option value="node.js">node.js</option>
             <option value="dart">Dart</option>
