@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useParams } from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,8 +11,6 @@ export default function CreatePost() {
   const [formData,setFormData] = useState({});
   const [publishError,setPublishError] = useState(null);
   const {postId} = useParams();
-  const {currentUser}= useSelector((state)=>state.user);
-  const navigate = useNavigate();
 
   useEffect(()=>{
     try{
@@ -38,31 +34,9 @@ export default function CreatePost() {
     }
   },[postId])
   
-  const handleSubmit = async (e) =>{
+  const handleSubmit = () => {
     e.preventDefault();
-    try{
-      const res = await fetch(`/api/post/update-post/${postId}/${currentUser._id}`,{
-        method:'PUT',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if(!res.ok){
-        setPublishError(data.message);
-        return;
-      }
-     
-      if(res.ok){
-        setPublishError(null);
-        navigate(`/post-page/${data.title}`);
-      }
-    }
-    catch(error){
-      setPublishError('something went wrong')
-    }
-  };
+  }
 
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>

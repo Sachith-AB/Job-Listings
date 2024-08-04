@@ -10,6 +10,7 @@ export default function CreatePost() {
   const [formData,setFormData] = useState({});
   const [publishError,setPublishError] = useState(null);
   const navigate = useNavigate();
+  
 
 
   const handleSubmit = async (e) =>{
