@@ -4,7 +4,6 @@ import { Button, Spinner } from 'flowbite-react';
 import PostCards from '../components/PostCards';
 
 
-
 export default function Post() {
 
     const {postslug}=useParams();
