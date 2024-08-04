@@ -59,6 +59,7 @@ export default function App() {
         <Route path="/parttime-job-post" element={<PartTimeJobPost />} />
         <Route path="/fulltime-job-post" element={<FulltimeJobPost />} />
         <Route path="/post-page/:postslug" element={<Post/>}/>
+        <Route path='/update-post/:postId' element={<UpdatePost/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
