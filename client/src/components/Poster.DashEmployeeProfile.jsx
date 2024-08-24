@@ -189,8 +189,9 @@ export default function PosterDashEmployeeProfile() {
                 <p className="text-gray-600"></p>
               </div>
             </div>
-            <div>
+            <div className='flex'>
               <Button onClick={handleSubmit} className='m-12 bg-blue-500' >update profile</Button>
+              <Button className='m-12 bg-blue-500' >Delete profile</Button>
             </div>
 
           </div>
@@ -245,7 +246,7 @@ export default function PosterDashEmployeeProfile() {
 
 
               {/* Contact Information */}
-              <Card className="mt-6">
+              <Card className="mt-6 dark:">
                 <h2 className="text-lg font-semibold mb-2">Contact Information</h2>
                 <ul className="text-gray-700">
                   <li className="flex items-center"><span className="mr-2"><GiWorld /></span> {currentUser.email}</li>
