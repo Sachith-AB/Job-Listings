@@ -10,6 +10,7 @@ import contactRoutes from './routes/contact.route.js'
 import commentRoutes from './routes/comment.route.js'
 import jobseekerRoutes from './routes/jobseeker.route.js'
 import jobposterRoutes from './routes/jobposter.route.js'
+import adRoutes from './routes/ad.route.js'
 
 
 
@@ -47,6 +48,7 @@ app.use('/api/comment',commentRoutes)
 app.use('/api/post',postRoutes);
 app.use('/api/jobseeker',jobseekerRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/ad', adRoutes);
 
 
 
