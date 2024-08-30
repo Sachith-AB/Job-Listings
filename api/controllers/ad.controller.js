@@ -11,6 +11,8 @@ export const createAd = async (req, res, next) => {
         return next(errorHandler(400,'Please add all fields'));
     }
     const ad = new Ad({
+        //i have to add function for get userID
+//
         //userId:req.body.userId,
         title:req.body.title,
         image:req.body.image,
@@ -40,8 +42,8 @@ export const getAds= async (req,res,next)=>{
 };
 
 export const deleteAd = async (req, res, next) => {
-    //
-    //
+    //i have to add function for get userID
+//
 
     try {
         await Ad.findByIdAndDelete(req.params.adId);
