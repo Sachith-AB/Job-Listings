@@ -8,7 +8,6 @@ import path from 'path';
 import postRoutes from './routes/post.route.js'
 import contactRoutes from './routes/contact.route.js'
 
-
 dotenv.config();
 
 mongoose.connect("mongodb+srv://ilakshitha7921:ilakshitha7921@cluster0.gfhczos.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -23,12 +22,13 @@ mongoose.connect("mongodb+srv://ilakshitha7921:ilakshitha7921@cluster0.gfhczos.m
 
  
 
-
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(cors({
+  
+}));
 app.listen(4500, () => {
   console.log('Server is running port 4500');
 });
@@ -38,10 +38,18 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/jobposter', jobposterRoutes);
 app.use('/api/seeker', seekerRoutes)
-app.use('/api/comment',commentRoutes)
+
+
+
+
 app.use('/api/post',postRoutes);
 app.use('/api/jobseeker',jobseekerRoutes);
+app.use('/api/comment', commentRoutes)
+app.use('/api/post', postRoutes);
+
+
 app.use('/api/contact', contactRoutes);
+
 
 
 
@@ -62,8 +70,4 @@ app.use('/api/auth', authRoutes);
 
 });
 
-
-app.use('/api/post',postRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/post', postRoutes);
 

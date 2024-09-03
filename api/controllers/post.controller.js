@@ -2,25 +2,29 @@ import Post from "../models/post.model.js";
 import { errorHandler } from "../utils/error.js";
 
 export const createPost = async(req,res,next) => {
-    
+    console.log(req.user.username);
+    if(req.user.role === "jobPoster"){
 
-    const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g,'-');
-    const newPost = new Post({
+        const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g,'-');
+        const newPost = new Post({
         ...req.body,
         slug,
         userId:req.user.id,
     });
 
-    try{
-        const savedPost = await newPost.save();
-        res.status(201).json(savedPost);
-    }catch(error){
-        next(error);
+        try{
+            const savedPost = await newPost.save();
+            res.status(201).json(savedPost);
+        }catch(error){
+            next(error);
+        }
+    }else {
+        return next(errorHandler(403,'You are not allowed to create a post'));
     }
 }
 
 export const updatePost = async(req,res,next) => {
-
+    console.log(req.user);
     if(req.user.id !==req.params.userId){
         return next(errorHandler(403,'You are not allowed to update this post'))
     }
@@ -71,3 +75,18 @@ export const getPosts = async  (req,res,next) => {
         next(error);
     }
 };
+
+export const getpostForUser = async(req,res,next)=>{
+    try {
+        const { userId } = req.params;
+        //console.log(userId);
+        const allpost = await Post.find({userId});
+        const count = await Post.countDocuments({userId});
+
+        res.status(200).json({ allpost,count });
+
+    } 
+    catch (error) {
+        next(error);
+    }
+}

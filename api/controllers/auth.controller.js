@@ -21,7 +21,6 @@ export const signup = async (req, res, next) => {
     const newUser = new User({
         username,
         email,
-        fullname,
         password: hashedPassword,
         gender,
         mobileNumber,
@@ -86,4 +85,16 @@ export const signin = async (req, res, next) => {
 
 
 };
+
+
+export const signout= async (req, res, next) => {
+    try {
+      res
+        .clearCookie('access_token')
+        .status(200)
+        .json('User has been signed out');
+    } catch (error) {
+      next(error);
+    }
+  };
 
