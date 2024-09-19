@@ -90,7 +90,7 @@ export default function Post() {
       {/* Right Column: Post Details Section */}
       <div className="flex flex-col gap-3 justify-center">
         
-          <h1 className="text-3xl font-semibold mb-4 dark:text-white">
+          <h1 className="text-xl font-semibold mb-4 dark:text-white">
           
             {post.title} - LKR {post.salary}
           </h1>

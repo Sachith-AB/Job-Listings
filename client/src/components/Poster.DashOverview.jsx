@@ -32,7 +32,7 @@ export default function PosterDashOverview() {
 
                 if (res.ok) {
                     
-                    setPosts(data.allPost);
+                    setPosts(data.allPost.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
                     
 
                     const part = data.allPost.filter(post => post.type === 'part');
