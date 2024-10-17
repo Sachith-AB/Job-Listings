@@ -142,10 +142,10 @@ export default function PosterDashOverview() {
 </div>
         
 
-        <Modal show = {showModal} onClose={() => setShowModal(false)} popupsize='md'>
+        <Modal show = {showModal} onClose={() => setShowModal(false)} popupsize='md' className=''>
             <Modal.Header/>
-            <Modal.Body>
-                <div className='text-center'>
+            <Modal.Body className=''>
+                <div className='text-center '>
                     <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400
                     dark:text-gray-200 mb-4 mx-auto'/>
                     <h3 className='mb-5 text-gray-500 text-lg'>

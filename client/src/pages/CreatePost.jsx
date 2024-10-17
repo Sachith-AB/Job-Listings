@@ -64,7 +64,7 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.title || !formData.venue || !formData.date || !formData.sTime || !formData.eTime || !formData.salary, !formData.members, !formData.gender) {
+    if (!formData.title || !formData.venue || !formData.date || !formData.salary, !formData.members, !formData.gender) {
       return setPublishError('All fields are required');
 
     }
@@ -97,8 +97,8 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  bg-blue-50 dark:bg-slate-900 w-full">
-      <div className="w-full md:w-2/3  dark:bg-slate-900 dark:text-white  p-10 flex flex-col justify-center rounded-lg ">
+    <div className="min-h-screen flex items-center justify-center  bg-blue-50 dark:bg-slate-700 w-full">
+      <div className="w-full md:w-2/3  dark:bg-slate-600 dark:text-white  p-10 flex flex-col justify-center rounded-lg ">
 
         <h1 className="text-left  text-3xl font-bold mb-5">Part Time Job</h1>
         <form onSubmit={handleSubmit} className='w-full'>
@@ -107,12 +107,22 @@ export default function CreatePost() {
           border-blue-500 border-dotted p-3'
           >
             <FileInput type="file" accept='image/*' onChange={(e) => setFile(e.target.files[0])} />
-            <button type='button' onClick={handleUploadImage} className='bg-blue-500 hover:bg-blue-600 px-1 py-2 rounded-lg text-white' size='sm' outline >
+            <button 
+              type="button" 
+              onClick={handleUploadImage} 
+              className="bg-blue-500 hover:bg-blue-600 px-1 py-2 rounded-lg text-white focus:outline-none focus:ring-0 border-none" 
+              size="sm"
+            >
               {
                 imageUploadProgress ? (
-                  <div>
-                    <CircularProgressbar className='h-20 text-white bg-white' value={imageUploadProgress} text={`${imageUploadProgress || 0}%`} />
-                  </div>) : ('Upload image')
+                  <div className="">
+                    <CircularProgressbar 
+                      className="h-10 flex-grow bg-transparent text-white bg-white dark:bg-slate-600 focus:outline-none focus:ring-0 border-none border-blue-50" 
+                      value={imageUploadProgress} 
+                      text={`${imageUploadProgress || 0}%`} 
+                    />
+                  </div>
+                ) : ('Upload image')
               }
             </button>
             {
@@ -150,7 +160,7 @@ export default function CreatePost() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="venue">Venue</label>
+            <label htmlFor="venue">Company Name</label>
             <input
               type="text"
               id="venue"
@@ -170,52 +180,6 @@ export default function CreatePost() {
               className="w-full py-2 px-4 border dark:bg-white dark:text-gray-600 border-gray-300 rounded-md"
               placeholder="Date"
               onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="sTime">Start Time</label>
-            <input
-              type="time"
-              id="sTime"
-              name="sTime"
-              className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-white dark:text-gray-600"
-              onChange={(e) => setFormData({ ...formData, sTime: e.target.value })}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="eTime">End Time</label>
-            <input
-              type="time"
-              id="eTime"
-              name="eTime"
-              className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-white dark:text-gray-600"
-              onChange={(e) => setFormData({ ...formData, eTime: e.target.value })}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="salary">Number</label>
-            <input
-              type="text"
-              id="number"
-              name="number"
-              placeholder='Number'
-              className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-white dark:text-gray-600"
-              onChange={(e) => setFormData({ ...formData, salary: e.target.value })}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="salary">Salary</label>
-            <input
-              type="text"
-              id="salary"
-              name="salary"
-              placeholder='Salary'
-              className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-white dark:text-gray-600"
-              onChange={(e) => setFormData({ ...formData, salary: e.target.value })}
             />
           </div>
 

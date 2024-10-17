@@ -107,41 +107,28 @@ export default function Post() {
           {
             currentUser.currentUser.role === "jobPoster" && 
               <button type="button" onClick={handleUpdateClick} className="bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded-md">
-              Change Details
-            </button>
+                Change Details
+              </button>
           }
           </div>
   
           <ul className="space-y-3 text-green-800 text-sm font-semibold gap-5">
             <div className='flex gap-5'>
                 <li className="flex items-center dark:text-slate-200">
-                <FaCalendar className="text-lg mr-2" />
-                Date: {new Date(post.date).toLocaleDateString()}
+                  <FaCalendar className="text-lg mr-2" />
+                    Date: {new Date(post.date).toLocaleDateString()}
                 </li>
-                <li className="flex items-center dark:text-slate-200">
-                <FaClock className="text-lg mr-2" />
-                Start At: {post.sTime}
-                </li>
-                <li className="flex items-center dark:text-slate-200">
-                <FaClock className="text-lg mr-2" />
-                End At: {post.eTime}
-                </li>
+                
 
             </div>
             <div className='flex gap-5'>
                 <li className="flex items-center dark:text-slate-200">
-                <FaStopwatch className="text-lg mr-2" />
-                Duration: {parseInt(post.sTime) < parseInt(post.eTime) 
-                    ? parseInt(post.eTime) - parseInt(post.sTime)
-                    : 24 - (parseInt(post.sTime) - parseInt(post.eTime))}h
+                  <FaUser className="text-lg mr-2" />
+                    Members: {post.members}
                 </li>
                 <li className="flex items-center dark:text-slate-200">
-                <FaUser className="text-lg mr-2" />
-                Members: {post.members}
-                </li>
-                <li className="flex items-center dark:text-slate-200">
-                <FaMale className="text-lg mr-2" />
-                {post.gender === 'male' ? 'Male' : post.gender === 'female' ? 'Female' : 'Both'}
+                  <FaMale className="text-lg mr-2" />
+                    {post.gender === 'male' ? 'Male' : post.gender === 'female' ? 'Female' : 'Both'}
                 </li>
             </div>
           </ul>

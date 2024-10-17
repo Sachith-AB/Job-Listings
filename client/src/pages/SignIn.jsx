@@ -66,7 +66,7 @@ const SignIn = () => {
             
 
                     <div className='flex flex-col dark:bg-slate-600 lg:flex-row justify-center items-center w-3/4  rounded-lg shadow-lg'>
-                        <div className='w-1/2 dark:bg-slate-600 dark:text-black bg-white p-8 z-10 rounded-lg rounded-r-none'>
+                        <div className='w-full dark:bg-slate-600 dark:text-black bg-white p-8 z-10 rounded-lg rounded-r-none'>
                             <div className="max-w-md dark:text-white">
                                 <div className="">
                                     <img src={logo} alt="Logo" className="h-28 rounded-full" />
@@ -83,7 +83,7 @@ const SignIn = () => {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                        className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                         placeholder="Email"
                                         onChange={handleChange}
                                     />
@@ -94,7 +94,7 @@ const SignIn = () => {
                                         type="password"
                                         id="password"
                                         name="password"
-                                        className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                        className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                         placeholder="Password"
                                         onChange={handleChange}
                                     />

@@ -64,7 +64,7 @@ const SignUp = () => {
         <div className='min-h-screen bg-gray-100 dark:bg-slate-700 flex justify-center items-center'>
             
                 <div className='flex flex-col  dark:bg-slate-600 lg:flex-row justify-center items-center w-3/4  rounded-lg shadow-lg'>
-                    <div className='w-1/2 dark:text-black  dark:bg-slate-600 bg-white p-8 z-10 rounded-lg rounded-r-none'>
+                    <div className='w-full dark:text-black  dark:bg-slate-600 bg-white p-8 z-10 rounded-lg rounded-r-none'>
                         <div className="max-w-md mx-auto  dark:text-white">
                             <div className="mb-1">
                                 <img src={logo} alt="Logo" className="h-20 rounded-full" />
@@ -81,7 +81,7 @@ const SignUp = () => {
                                     type="text"
                                     id="username"
                                     name="username"
-                                    className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                    className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                     placeholder="Name"
                                     onChange={handleChange}
                                 />
@@ -92,7 +92,7 @@ const SignUp = () => {
                                     type="email"
                                     id="email"
                                     name="email"
-                                    className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                    className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                     placeholder="Email"
                                     onChange={handleChange}
                                 />
@@ -103,7 +103,7 @@ const SignUp = () => {
                                     type="password"
                                     id="password"
                                     name="password"
-                                    className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                    className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                     placeholder="Password"
                                     onChange={handleChange}
                                 />
@@ -114,7 +114,7 @@ const SignUp = () => {
                                     type="password"
                                     id="confirmPassword"
                                     name="confirmPassword"
-                                    className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                    className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                     placeholder="Confirm Password"
                                     onChange={handleChange}
                                 />
@@ -125,7 +125,7 @@ const SignUp = () => {
                                     type="text"
                                     id="mobileNumber"
                                     name="mobileNumber"
-                                    className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                    className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                     placeholder="Mobile Number"
                                     onChange={handleChange}
                                 />
@@ -135,7 +135,7 @@ const SignUp = () => {
                                 <select
                                     id="role"
                                     name="role"
-                                    className="w-full py-2 px-4 border border-gray-300 rounded-md"
+                                    className="w-full py-2 px-4 border border-gray-300 rounded-md dark:bg-slate-700 dark:text-white"
                                     onChange={handleChange}
                                 >
                                     <option value="">Select Role</option>

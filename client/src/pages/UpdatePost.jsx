@@ -159,7 +159,7 @@ export default function CreatePost() {
                             disabled={imageUploadProgress}
                         >
                             {imageUploadProgress ? (
-                                <CircularProgressbar className='h-20 bg-white' value={imageUploadProgress} text={`${imageUploadProgress || 0}%`} />
+                                <CircularProgressbar className='h-10 bg-white dark:bg-slate-600' value={imageUploadProgress} text={`${imageUploadProgress || 0}%`} />
                             ) : ('Upload image')}
                         </button>
                         {post.image && (
@@ -181,7 +181,7 @@ export default function CreatePost() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="venue">Venue</label>
+            <label htmlFor="venue">Company Name</label>
             <input
               type="text"
               id="venue"
@@ -205,41 +205,11 @@ export default function CreatePost() {
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="sTime">Start Time</label>
-            <input
-              type="time"
-              id="sTime"
-              name="sTime"
-              value={post.sTime}
-              className="w-full py-2 px-4 border dark:text-slate-500 border-gray-300 rounded-md"
-              onChange={handleChange}
-            />
-          </div>
+          
 
-          <div className="mb-4">
-            <label htmlFor="eTime">End Time</label>
-            <input
-              type="time"
-              id="eTime"
-              name="eTime"
-              value={post.eTime}
-              className="w-full py-2 px-4 border dark:text-slate-500 border-gray-300 rounded-md"
-              onChange={handleChange}
-            />
-          </div>
+          
 
-          <div className="mb-4">
-            <label htmlFor="salary">Salary</label>
-            <input
-              type="text"
-              id="salary"
-              name="salary"
-              value={post.salary}
-              className="w-full py-2 px-4 border dark:text-slate-500 border-gray-300 rounded-md"
-              onChange={handleChange}
-            />
-          </div>
+          
 
           <div className="mb-4 flex gap-2 w-full">
             <div className="w-1/2">
