@@ -19,46 +19,44 @@ const Home = () => {
   const [currentPartTimeJob, setCurrentPartTimeJob] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
-    useEffect(()=>{
-        const fetchPosts = async () => {
-            setLoading(true);
-            setShowMore(false);
-            const res = await fetch(`/api/post/get-posts`);
-            const data = await res.json();
-            
-            
-            if(res.ok){
-                setShowMore(true);
-                setPosts(data.posts);
-                setTPosts(data.totalPosts);
-                setLoading(false);
-                
-                const part = data.posts.filter(post => post.type === 'part');
-                const pJob = part.length;
-                setPJob(pJob);
-
-                const full = data.posts.filter(post => post.type == 'full');
-                const fJob = full.length;
-                setFJob(fJob);
-
-                
-
-                // Sort by 'createdAt' (assuming 'createdAt' is a date string)
-                const sortedFull = full.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-                // Get the first 3 most recent posts
-                const recentFullPosts = sortedFull.slice(0, 8);
-                setFirst(recentFullPosts)
-                
-            }
-            if(!res.ok){
-              console.log(data.message);
-              setLoading(false);
-            }
-        };
-        fetchPosts();
-    },[posts._id])
-
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      setShowMore(false);
+      const res = await fetch(`/api/post/get-posts`);
+      const data = await res.json();
+  
+      if (res.ok) {
+        setPosts(data.posts);
+        setTPosts(data.totalPosts);
+        setLoading(false);
+  
+        const part = data.posts.filter((post) => post.type === "part");
+        const pJob = part.length;
+        setPJob(pJob);
+  
+        const full = data.posts.filter((post) => post.type === "full");
+        const fJob = full.length;
+        setFJob(fJob);
+  
+        // Sort by 'createdAt' (assuming 'createdAt' is a date string)
+        const sortedFull = full.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  
+        // Get the first 8 most recent posts
+        const initialPosts = sortedFull.slice(0, 4);
+        setFirst(initialPosts);
+  
+        // If there are more than 8 posts, allow "Show More"
+        if (fJob > 8) {
+          setShowMore(true);
+        }
+      } else {
+        console.log(data.message);
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []); 
     
     
 
@@ -116,6 +114,17 @@ const Home = () => {
     };
   };
 
+  const handleShowMore = () => {
+    if (showMore) {
+      // Show all posts when "Show More" is clicked
+      setFirst(posts.filter((post) => post.type === "full"));
+    } else {
+      // Collapse to show only the first 8 when clicked again
+      setFirst(posts.filter((post) => post.type === "full").slice(0, 4));
+    }
+    setShowMore(!showMore);
+  };
+
   return (
     <div className="relative flex flex-col items-center  dark:bg-slate-700 bg-blue-50 min-h-screen p-4 lg:p-10">
       {loading && (
@@ -164,8 +173,8 @@ const Home = () => {
     
 
                 {/* Job Posts Info Box */}
-                <div className="absolute top-0 right-0 bg-white dark:bg-slate-200 p-2 rounded shadow-md mt-4 mr-10">
-                    <span className="block text-sm z-10 font-medium text-gray-800">
+                <div className="absolute top-0 right-0 bg-white dark:bg-slate-200 p-2 rounded shadow-md mt-4 mr-10 hover:scale-105 cursor-pointer transition-transform duration-150">
+                    <span className="block text-sm z-10 font-medium text-gray-800 ">
                     {tPosts}+ All Jobs Post 
                     </span>
                 </div>
@@ -263,8 +272,9 @@ const Home = () => {
           <JobPostCard post={post} key={post._id} />
         ))}
       </div>
-
-      
+    {
+      showMore && <p className="mt-3 font-bold text-blue-700 cursor-pointer hover:underline" onClick={handleShowMore}>SHOW MORE</p>
+    }
     </div>
   );
 };

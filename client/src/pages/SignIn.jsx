@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Label, TextInput, Card, Alert, Spinner } from 'flowbite-react';
+import {  Spinner } from 'flowbite-react';
 import { signInStart,signInSuccess,signInFailure } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -23,29 +23,25 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.email || !formData.password || !formData.confirmPassword) {
+    if (!formData.email || !formData.password) {
         return setErrorMessage('All feilds are required')
     }
 
-    // Password confirmation check
-    if (formData.password !== formData.confirmPassword) {
-        return setErrorMessage('Passwords does not match');
-    }
-
     try {
-      dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(signInFailure(data.message));
-      }
+        dispatch(signInStart());
+        const res = await fetch('/api/auth/signin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        if (data.success === false) {
+            dispatch(signInFailure(data.message));
+        }
 
-      if (res.ok) {
-        dispatch(signInSuccess(data));
+        if (res.ok) {
+            dispatch(signInSuccess(data));
+        
         
         if(data.role === 'jobPoster'){
             navigate('/poster-dashboard?tab=profile');
@@ -54,8 +50,14 @@ const SignIn = () => {
         }
             
         }
+
+        if(!res.ok){
+            dispatch(signInFailure(data));
+            setErrorMessage(data.message)
+        }
     } catch (error) {
         dispatch(signInFailure(error.message));
+        setErrorMessage(error.message);
     }
 }
 
@@ -67,7 +69,7 @@ const SignIn = () => {
                         <div className='w-1/2 dark:bg-slate-600 dark:text-black bg-white p-8 z-10 rounded-lg rounded-r-none'>
                             <div className="max-w-md dark:text-white">
                                 <div className="">
-                                    <img src={logo} alt="Logo" className="h-28 " />
+                                    <img src={logo} alt="Logo" className="h-28 rounded-full" />
                                 </div>
                                 <div className='text-start'>
                                     <h2 className="text-3xl font-bold font-sans">Welcome Back</h2>
@@ -94,17 +96,6 @@ const SignIn = () => {
                                         name="password"
                                         className="w-full py-2 px-4 border border-gray-300 rounded-md"
                                         placeholder="Password"
-                                        onChange={handleChange}
-                                    />
-                                </div>
-
-                                <div className="mb-4">
-                                    <input
-                                        type="password"
-                                        id="confirmPassword"
-                                        name="confirmPassword"
-                                        className="w-full py-2 px-4 border border-gray-300 rounded-md"
-                                        placeholder="Confirm Password"
                                         onChange={handleChange}
                                     />
                                 </div>

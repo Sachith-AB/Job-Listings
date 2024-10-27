@@ -32,9 +32,13 @@ import FpostUpdate from './pages/FpostUpdate';
 import Landing from './pages/Landing';
 import Homeh from './pages/Home'
 import Search from './pages/Search';
+import Chat from './pages/Chat';
 
 import { useSelector } from 'react-redux'
 import AdminPage from './pages/AdminPage';
+import ChatList from './pages/ChatList';
+import PosterChatBox from './pages/Poster.ChatBox';
+import NotFound from './pages/NotFound';
 
 
 
@@ -54,6 +58,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/landing" element={<Landing />} />
+        <Route path='*' element={<NotFound/>}/>
         
         
         <Route element={<PrivateRoute/>}>
@@ -62,6 +67,7 @@ export default function App() {
           <Route path='/search' element={<Search/>}></Route>
           <Route path = '/full-post/:postId' element={<Fpost/>}/>
           <Route path='/post/:postId' element={<Post/>}/> 
+          <Route path='/chat-list' element={<ChatList/>}/>
           
           {
             admin &&
@@ -71,6 +77,7 @@ export default function App() {
           {
             role == 'jobSeeker' && 
             <>
+              <Route path='/chatbox' element={<Chat/>}/>
               <Route path="/seeker-dashboard" element={<SeekerDashboard />} />
               <Route path="/seeker-dashboard?tab=profile" element={<SeekerProfile/>} />
             </>
@@ -80,6 +87,7 @@ export default function App() {
           {
             role == 'jobPoster' && 
             <>
+              <Route path='/poster-chat-box/:postId/:sendId' element={<PosterChatBox/>}/>
               <Route path="/poster-dashboard" element={<PosterDashboard />}>
               <Route index element={<PosterDashOverview />} />
               <Route path="employeeprofile" element={<PosterDashEmployeeProfile />} />
